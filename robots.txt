@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gysavo45-beep.github.io/ZonaUtil/sitemap.xml
