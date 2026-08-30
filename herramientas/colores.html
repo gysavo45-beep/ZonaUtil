@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Generador de colores aleatorios HEX y RGB.">
+<title>Generador de colores | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}.box{max-width:700px;margin:40px auto;padding:25px}.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 35px #0001}.color{height:230px;border-radius:18px;margin:20px 0;border:1px solid #ddd}button{padding:14px 20px;background:#2563eb;color:white;border:0;border-radius:10px;font-weight:bold;cursor:pointer}.code{text-align:center;font-size:24px;font-weight:bold}.back{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="card">
+<h1>🎨 Generador de colores</h1>
+<div class="color" id="color"></div>
+<div class="code" id="hex">#------</div>
+<p id="rgb" style="text-align:center">RGB: —</p>
+<button onclick="generar()">GENERAR COLOR</button>
+<button onclick="copiar()">COPIAR HEX</button>
+</div>
+</div>
+<script>
+function generar(){
+ const a=new Uint32Array(3);crypto.getRandomValues(a);
+ const r=a[0]%256,g=a[1]%256,b=a[2]%256;
+ const hex='#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('').toUpperCase();
+ color.style.background=hex;document.getElementById('hex').textContent=hex;
+ rgb.textContent=`RGB: ${r}, ${g}, ${b}`;
+}
+function copiar(){navigator.clipboard.writeText(hex.textContent);alert('Color copiado.')}
+generar();
+</script>
+</body>
+</html>

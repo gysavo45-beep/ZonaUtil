@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sorteador aleatorio online gratuito.">
+<title>Sorteador aleatorio | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}.box{max-width:700px;margin:40px auto;padding:25px}.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 35px #0001}textarea{width:100%;height:220px;padding:15px;border:1px solid #ddd;border-radius:12px;resize:vertical}button{padding:14px 20px;background:#2563eb;color:white;border:0;border-radius:10px;font-weight:bold;margin-top:15px;cursor:pointer}.result{text-align:center;font-size:32px;font-weight:900;color:#2563eb;margin:25px 0}.back{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="card">
+<h1>🎯 Sorteador aleatorio</h1>
+<p>Escribe una opción por línea.</p>
+<textarea id="lista" placeholder="Juan&#10;Pedro&#10;María&#10;Ana"></textarea>
+<button onclick="sortear()">SORTEAR</button>
+<div class="result" id="resultado">—</div>
+</div>
+</div>
+<script>
+function sortear(){
+ const opciones=document.getElementById('lista').value.split('\n').map(x=>x.trim()).filter(Boolean);
+ if(!opciones.length){alert('Introduce al menos una opción.');return}
+ const i=Math.floor(Math.random()*opciones.length);
+ document.getElementById('resultado').textContent=opciones[i];
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Generador de contraseñas aleatorias online.">
+<title>Generador de contraseñas | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}.box{max-width:700px;margin:40px auto;padding:25px}.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 35px #0001}input[type=number]{width:100%;padding:13px;border:1px solid #ddd;border-radius:10px}.checks{display:grid;gap:12px;margin-top:20px}button{padding:14px;background:#2563eb;color:white;border:0;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:20px}.pass{margin-top:25px;padding:18px;background:#eef2ff;border-radius:12px;word-break:break-all;font-size:20px;font-weight:bold}.back{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="card">
+<h1>🔐 Generador de contraseñas</h1>
+<label>Longitud</label>
+<input id="len" type="number" min="4" max="100" value="16">
+<div class="checks">
+<label><input id="upper" type="checkbox" checked> Mayúsculas</label>
+<label><input id="lower" type="checkbox" checked> Minúsculas</label>
+<label><input id="numbers" type="checkbox" checked> Números</label>
+<label><input id="symbols" type="checkbox" checked> Símbolos</label>
+</div>
+<button onclick="generar()">GENERAR CONTRASEÑA</button>
+<div class="pass" id="resultado">—</div>
+<button onclick="copiar()">COPIAR</button>
+</div>
+</div>
+<script>
+function generar(){
+ let chars='';
+ if(upper.checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+ if(lower.checked)chars+='abcdefghijklmnopqrstuvwxyz';
+ if(numbers.checked)chars+='0123456789';
+ if(symbols.checked)chars+='!@#$%^&*()_+-=[]{}';
+ if(!chars){alert('Selecciona al menos un tipo de carácter.');return}
+ let out='';
+ const arr=new Uint32Array(Number(len.value));
+ crypto.getRandomValues(arr);
+ for(let i=0;i<arr.length;i++)out+=chars[arr[i]%chars.length];
+ resultado.textContent=out;
+}
+function copiar(){
+ if(resultado.textContent==='—')return;
+ navigator.clipboard.writeText(resultado.textContent);
+ alert('Contraseña copiada.');
+}
+</script>
+</body>
+</html>

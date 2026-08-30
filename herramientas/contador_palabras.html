@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Contador de palabras y caracteres online gratuito.">
+<title>Contador de palabras | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}.box{max-width:800px;margin:40px auto;padding:25px}.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 35px #0001}textarea{width:100%;height:300px;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.stat{background:#eff6ff;padding:20px;text-align:center;border-radius:12px}.stat b{font-size:25px;display:block;color:#2563eb}.back{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="card">
+<h1>📝 Contador de palabras</h1>
+<textarea id="texto" placeholder="Escribe o pega tu texto aquí..."></textarea>
+<div class="stats">
+<div class="stat"><b id="words">0</b>Palabras</div>
+<div class="stat"><b id="chars">0</b>Caracteres</div>
+<div class="stat"><b id="lines">0</b>Líneas</div>
+</div>
+</div>
+</div>
+<script>
+texto.addEventListener('input',()=>{
+ const t=texto.value;
+ words.textContent=t.trim()?t.trim().split(/\s+/).length:0;
+ chars.textContent=t.length;
+ lines.textContent=t?t.split('\n').length:0;
+});
+</script>
+</body>
+</html>

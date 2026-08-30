@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Generador de números aleatorios online gratuito.">
+<title>Generador de números aleatorios | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}.box{max-width:700px;margin:40px auto;padding:25px}.card{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 35px #0001}h1{margin-top:0}label{display:block;margin-top:15px;font-weight:bold}input{width:100%;padding:14px;margin-top:7px;border:1px solid #ddd;border-radius:10px}button{border:0;border-radius:10px;padding:13px 18px;background:#2563eb;color:white;font-weight:bold;cursor:pointer;margin-top:20px}.result{font-size:55px;text-align:center;font-weight:900;margin:30px 0;color:#2563eb}.history{margin-top:25px;padding:15px;background:#f1f5f9;border-radius:12px}.back{display:inline-block;margin-bottom:20px;color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver a Zona Útil</a>
+<div class="card">
+<h1>🎲 Números aleatorios</h1>
+<p>Genera números aleatorios dentro del rango que quieras.</p>
+<label>Mínimo</label>
+<input id="min" type="number" value="1">
+<label>Máximo</label>
+<input id="max" type="number" value="100">
+<button onclick="generar()">GENERAR</button>
+<div class="result" id="resultado">—</div>
+<div class="history"><b>Historial</b><div id="historial">Todavía no hay resultados.</div></div>
+</div>
+</div>
+<script>
+const historial=[];
+function generar(){
+ let a=Number(document.getElementById('min').value);
+ let b=Number(document.getElementById('max').value);
+ if(a>b)[a,b]=[b,a];
+ const r=Math.floor(Math.random()*(b-a+1))+a;
+ document.getElementById('resultado').textContent=r;
+ historial.unshift(r);
+ document.getElementById('historial').textContent=historial.slice(0,10).join(' · ');
+}
+</script>
+</body>
+</html>

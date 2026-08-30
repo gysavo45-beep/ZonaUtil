@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Calculadora online gratuita para operaciones matemáticas.">
+<title>Calculadora online | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb}.box{max-width:400px;margin:35px auto;padding:20px}.calc{background:#111827;padding:20px;border-radius:20px}.screen{background:#020617;color:white;padding:20px;font-size:32px;text-align:right;border-radius:12px;margin-bottom:15px;min-height:75px;overflow:hidden}.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.keys button{padding:20px;font-size:20px;border:0;border-radius:10px;cursor:pointer}.op{background:#2563eb;color:white}.back{display:block;margin-bottom:20px;color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="calc">
+<div class="screen" id="screen">0</div>
+<div class="keys">
+<button onclick="add('7')">7</button><button onclick="add('8')">8</button><button onclick="add('9')">9</button><button class="op" onclick="add('/')">÷</button>
+<button onclick="add('4')">4</button><button onclick="add('5')">5</button><button onclick="add('6')">6</button><button class="op" onclick="add('*')">×</button>
+<button onclick="add('1')">1</button><button onclick="add('2')">2</button><button onclick="add('3')">3</button><button class="op" onclick="add('-')">−</button>
+<button onclick="add('0')">0</button><button onclick="add('.')">.</button><button onclick="calcular()">=</button><button class="op" onclick="add('+')">+</button>
+<button onclick="borrar()" style="grid-column:span 4">BORRAR</button>
+</div>
+</div>
+</div>
+<script>
+let exp='';
+function add(x){exp+=x;screen.textContent=exp}
+function borrar(){exp='';screen.textContent='0'}
+function calcular(){
+ try{
+  if(!/^[0-9+\-*/.() ]+$/.test(exp))throw 0;
+  exp=String(Function('"use strict";return ('+exp+')')());
+  screen.textContent=exp;
+ }catch(e){screen.textContent='Error';exp=''}
+}
+</script>
+</body>
+</html>

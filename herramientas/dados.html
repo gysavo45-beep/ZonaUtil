@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dados virtuales online gratuitos.">
+<title>Dados virtuales PRO | Zona Útil</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f4f7fb;color:#172033}.box{max-width:700px;margin:40px auto;padding:25px}.card{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 35px #0001;text-align:center}select,button{padding:13px;border-radius:10px;border:1px solid #ddd;margin:8px}button{background:#2563eb;color:white;font-weight:bold;cursor:pointer}.dice{font-size:80px;font-weight:900;color:#2563eb;margin:25px}.back{color:#2563eb}
+</style>
+</head>
+<body>
+<div class="box">
+<a class="back" href="../index.html">← Volver</a>
+<div class="card">
+<h1>🎲 Dados virtuales</h1>
+<select id="tipo"><option value="4">D4</option><option value="6" selected>D6</option><option value="8">D8</option><option value="10">D10</option><option value="12">D12</option><option value="20">D20</option><option value="100">D100</option></select>
+<select id="cantidad"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+<br>
+<button onclick="lanzar()">LANZAR DADOS</button>
+<div class="dice" id="resultado">🎲</div>
+<p id="suma"></p>
+</div>
+</div>
+<script>
+function lanzar(){
+ const lados=Number(tipo.value),cantidad=Number(cantidad.value);
+ let resultados=[],total=0;
+ for(let i=0;i<cantidad;i++){let r=Math.floor(Math.random()*lados)+1;resultados.push(r);total+=r}
+ resultado.textContent=resultados.join(' · ');
+ suma.textContent='Suma total: '+total;
+}
+</script>
+</body>
+</html>
