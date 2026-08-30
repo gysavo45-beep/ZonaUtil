@@ -1,2216 +1,1629 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<title>Zona Útil | Herramientas online gratis</title>
 
-  <title>Zona Útil — Herramientas, tecnología y oportunidades</title>
+<meta name="description" content="Zona Útil: herramientas online gratuitas, rápidas y fáciles de usar. Calculadora, dados, sorteador, contraseñas, colores y mucho más.">
 
-  <meta name="description"
-        content="Zona Útil: herramientas gratuitas, tecnología, consejos, ahorro, negocios y oportunidades.">
+<meta name="keywords" content="herramientas online, calculadora, números aleatorios, sorteador, contraseñas, colores, dados, contador de palabras">
 
-  <meta name="keywords"
-        content="herramientas gratis, tecnología, ahorro, negocios, internet, consejos">
+<meta name="author" content="Zona Útil">
 
-  <meta name="author" content="Zona Útil">
+<meta name="robots" content="index, follow">
 
-  <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gysavo45-beep.github.io/ZonaUtil/">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title"
-        content="Zona Útil — Herramientas y contenido útil">
-  <meta property="og:description"
-        content="Descubre herramientas, consejos y oportunidades útiles.">
-  <meta property="og:url"
-        content="https://gysavo45-beep.github.io/ZonaUtil/">
+<meta property="og:title" content="Zona Útil | Herramientas online gratis">
+<meta property="og:description" content="Descubre herramientas online gratuitas para tu día a día.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gysavo45-beep.github.io/ZonaUtil/">
 
-  <!-- Favicon -->
-  <link rel="icon"
-        href="data:image/svg+xml,
-        <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
-        <text y=%22.9em%22 font-size=%2290%22>🚀</text>
-        </svg>">
+<style>
 
-  <style>
+/* =========================
+   RESET
+========================= */
 
-    /* =========================
-       RESET
-    ========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-      background: #f5f7fb;
-      color: #172033;
-      line-height: 1.6;
-
-      transition:
-        background .3s,
-        color .3s;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-
-    /* =========================
-       DARK MODE
-    ========================= */
-
-    body.dark {
-      background: #0b1020;
-      color: #edf2ff;
-    }
-
-    body.dark .card,
-    body.dark .article,
-    body.dark .tool-box,
-    body.dark .hero,
-    body.dark .newsletter,
-    body.dark .search-box {
-      background: #131a2d;
-      border-color: #26304a;
-    }
-
-    body.dark .muted {
-      color: #aab4cb;
-    }
-
-    body.dark .header {
-      background: rgba(11,16,32,.94);
-      border-color: #26304a;
-    }
-
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-
-      background: rgba(255,255,255,.94);
-
-      backdrop-filter: blur(15px);
-
-      border-bottom:
-        1px solid #e7eaf0;
-    }
-
-    .nav {
-      max-width: 1150px;
-      margin: auto;
-
-      min-height: 70px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 20px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 12px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #7c3aed
-        );
-
-      color: white;
-
-      box-shadow:
-        0 8px 25px rgba(37,99,235,.25);
-    }
+html{
+    scroll-behavior:smooth;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 22px;
+body{
+    font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#7c3aed;
+    --dark:#111827;
+    --text:#172033;
+    --muted:#64748b;
+    --white:#ffffff;
+    --border:#e2e8f0;
+    --card:#ffffff;
+    --bg:#f5f7fb;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.navbar{
+    max-width:1180px;
+    margin:auto;
+
+    min-height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+}
 
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: #2563eb;
-    }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    text-decoration:none;
+    color:var(--dark);
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
 
-    .nav-actions {
-      display: flex;
-      gap: 8px;
-    }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    .icon-btn {
-      border: 0;
+    border-radius:12px;
 
-      width: 40px;
-      height: 40px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
 
-      border-radius: 10px;
+    color:white;
+    font-size:21px;
+}
 
-      cursor: pointer;
+nav{
+    display:flex;
+    gap:25px;
+}
 
-      background: #eef2ff;
-      color: #172033;
+nav a{
+    text-decoration:none;
+    color:#475569;
+    font-weight:700;
+    font-size:14px;
+}
 
-      font-size: 18px;
-    }
+nav a:hover{
+    color:var(--primary);
+}
 
-    body.dark .icon-btn {
-      background: #202a43;
-      color: white;
-    }
+/* =========================
+   HERO
+========================= */
 
+.hero{
+    background:
+    radial-gradient(
+        circle at top right,
+        rgba(124,58,237,.20),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at top left,
+        rgba(37,99,235,.20),
+        transparent 35%
+    ),
+    #111827;
 
-    /* =========================
-       GENERAL
-    ========================= */
+    color:white;
 
-    .container {
-      width: min(1150px, 92%);
-      margin: auto;
-    }
+    padding:80px 20px 70px;
+}
 
-    .section {
-      padding: 60px 0;
-    }
+.hero-container{
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+}
 
-    .section-title {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
+.badge{
+    display:inline-block;
 
-    .section-subtitle {
-      color: #64748b;
-      margin-bottom: 28px;
-    }
+    padding:7px 13px;
 
-    .muted {
-      color: #64748b;
-    }
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
 
+    background:rgba(255,255,255,.08);
 
-    /* =========================
-       HERO
-    ========================= */
+    font-size:13px;
+    font-weight:700;
 
-    .hero {
-      margin-top: 30px;
+    margin-bottom:20px;
+}
 
-      padding:
-        70px 35px;
+.hero h1{
+    font-size:clamp(38px,7vw,68px);
+    line-height:1.05;
 
-      border-radius: 28px;
+    letter-spacing:-2px;
 
-      background:
-        radial-gradient(
-          circle at top right,
-          rgba(124,58,237,.20),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at bottom left,
-          rgba(37,99,235,.18),
-          transparent 35%
-        ),
-        white;
+    margin-bottom:20px;
+}
 
-      border:
-        1px solid #e7eaf0;
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #c084fc
+    );
 
-      overflow: hidden;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-      position: relative;
-    }
+    color:transparent;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+.hero p{
+    max-width:700px;
+    margin:0 auto 30px;
 
-      padding: 8px 13px;
+    color:#cbd5e1;
 
-      border-radius: 999px;
+    font-size:18px;
+}
 
-      background: #eff6ff;
-      color: #2563eb;
+/* =========================
+   SEARCH
+========================= */
 
-      font-size: 13px;
-      font-weight: 800;
+.search-box{
+    max-width:680px;
+    margin:auto;
 
-      margin-bottom: 18px;
-    }
+    position:relative;
+}
 
-    .hero h1 {
-      max-width: 760px;
+.search-box input{
+    width:100%;
 
-      font-size:
-        clamp(38px, 7vw, 70px);
+    padding:18px 55px 18px 20px;
 
-      line-height: 1.03;
+    border:none;
+    outline:none;
 
-      letter-spacing: -2px;
+    border-radius:16px;
 
-      margin-bottom: 20px;
-    }
+    font-size:16px;
 
-    .gradient-text {
-      background:
-        linear-gradient(
-          90deg,
-          #2563eb,
-          #7c3aed
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
-    }
+    background:white;
+    color:var(--text);
 
-    .hero p {
-      max-width: 650px;
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
+}
 
-      font-size: 18px;
+.search-icon{
+    position:absolute;
 
-      color: #64748b;
+    right:18px;
+    top:50%;
 
-      margin-bottom: 28px;
-    }
+    transform:translateY(-50%);
 
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    font-size:22px;
+}
 
-    .btn {
-      border: 0;
+/* =========================
+   MAIN
+========================= */
 
-      padding: 13px 20px;
+main{
+    max-width:1180px;
+    margin:auto;
 
-      border-radius: 12px;
+    padding:60px 20px;
+}
 
-      cursor: pointer;
+.section-header{
+    display:flex;
 
-      font-weight: 800;
+    align-items:end;
+    justify-content:space-between;
 
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+    gap:20px;
 
-      transition:
-        transform .2s,
-        box-shadow .2s;
-    }
+    margin-bottom:25px;
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+.section-header h2{
+    font-size:32px;
+    letter-spacing:-1px;
+}
 
-    .btn-primary {
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #4f46e5
-        );
-
-      color: white;
-
-      box-shadow:
-        0 10px 25px rgba(37,99,235,.25);
-    }
+.section-header p{
+    color:var(--muted);
+}
 
-    .btn-secondary {
-      background: #eef2ff;
-      color: #2563eb;
-    }
+/* =========================
+   CATEGORIES
+========================= */
 
+.categories{
+    display:flex;
+    gap:10px;
 
-    /* =========================
-       SEARCH
-    ========================= */
+    overflow-x:auto;
 
-    .search-section {
-      margin-top: 25px;
-    }
+    padding-bottom:8px;
 
-    .search-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    margin-bottom:30px;
+}
 
-      padding: 8px 14px;
+.category{
+    flex:0 0 auto;
 
-      background: white;
+    border:1px solid var(--border);
 
-      border:
-        1px solid #e5e7eb;
+    background:white;
 
-      border-radius: 15px;
-    }
+    color:#475569;
 
-    .search-box span {
-      font-size: 20px;
-    }
+    padding:10px 16px;
 
-    .search-box input {
-      width: 100%;
+    border-radius:999px;
 
-      border: 0;
-      outline: 0;
+    cursor:pointer;
 
-      background: transparent;
+    font-weight:800;
+}
 
-      font-size: 16px;
+.category:hover,
+.category.active{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
 
-      color: inherit;
+/* =========================
+   TOOLS GRID
+========================= */
 
-      padding: 12px 5px;
-    }
+.tools-grid{
+    display:grid;
 
+    grid-template-columns:
+    repeat(4, minmax(0,1fr));
 
-    /* =========================
-       CATEGORIES
-    ========================= */
+    gap:20px;
+}
 
-    .categories {
-      display: flex;
-      gap: 10px;
+/* =========================
+   TOOL CARD
+========================= */
 
-      overflow-x: auto;
+.tool-card{
+    position:relative;
 
-      padding-bottom: 5px;
+    display:flex;
+    flex-direction:column;
 
-      scrollbar-width: none;
-    }
+    min-height:285px;
 
-    .categories::-webkit-scrollbar {
-      display: none;
-    }
+    background:var(--card);
 
-    .category {
-      flex: 0 0 auto;
+    border:1px solid var(--border);
 
-      border: 1px solid #e1e6ef;
+    border-radius:22px;
 
-      background: white;
+    padding:24px;
 
-      padding: 9px 15px;
+    text-decoration:none;
 
-      border-radius: 999px;
+    color:var(--text);
 
-      cursor: pointer;
+    box-shadow:
+    0 8px 30px rgba(15,23,42,.05);
 
-      font-weight: 700;
+    transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
 
-      color: #475569;
-    }
+.tool-card:hover{
+    transform:translateY(-7px);
 
-    .category.active,
-    .category:hover {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
+    border-color:#bfdbfe;
 
+    box-shadow:
+    0 20px 45px rgba(15,23,42,.12);
+}
 
-    /* =========================
-       AD
-    ========================= */
+.tool-icon{
+    width:58px;
+    height:58px;
 
-    .ad {
-      min-height: 110px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      margin: 30px 0;
+    border-radius:17px;
 
-      border:
-        1px dashed #cbd5e1;
+    background:#eff6ff;
 
-      border-radius: 15px;
+    font-size:29px;
 
-      background: #f8fafc;
+    margin-bottom:20px;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.tool-card h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
 
-      text-align: center;
+.tool-card p{
+    color:var(--muted);
 
-      color: #94a3b8;
+    font-size:14px;
 
-      font-size: 13px;
-    }
+    margin-bottom:20px;
+}
 
+.tool-bottom{
+    margin-top:auto;
 
-    /* =========================
-       GRID
-    ========================= */
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-    .grid {
-      display: grid;
+.tool-tag{
+    font-size:12px;
+    font-weight:800;
 
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(240px, 1fr)
-        );
+    color:var(--primary);
 
-      gap: 18px;
-    }
+    background:#eff6ff;
 
+    padding:6px 10px;
 
-    /* =========================
-       CARDS
-    ========================= */
+    border-radius:999px;
+}
 
-    .card {
-      background: white;
+.open{
+    font-size:13px;
+    font-weight:900;
+    color:var(--primary);
+}
 
-      border:
-        1px solid #e7eaf0;
+/* =========================
+   AD PLACEHOLDER
+========================= */
 
-      border-radius: 18px;
+.ad-container{
+    margin:50px auto;
 
-      padding: 23px;
+    min-height:120px;
 
-      transition:
-        transform .25s,
-        box-shadow .25s;
-    }
+    max-width:970px;
 
-    .card:hover {
-      transform: translateY(-5px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      box-shadow:
-        0 15px 40px rgba(15,23,42,.09);
-    }
+    border:1px dashed #cbd5e1;
 
-    .card-icon {
-      width: 50px;
-      height: 50px;
+    border-radius:18px;
 
-      display: grid;
-      place-items: center;
+    background:#ffffff;
 
-      background: #eff6ff;
+    color:#94a3b8;
 
-      border-radius: 14px;
+    font-size:13px;
+}
 
-      font-size: 25px;
+/*
+   AQUÍ PODRÁS COLOCAR
+   TU CÓDIGO DE ADSENSE
+   CUANDO SEA APROBADO.
+*/
 
-      margin-bottom: 15px;
-    }
+/* =========================
+   INFO SECTION
+========================= */
 
-    .card h3 {
-      margin-bottom: 7px;
-    }
+.info-section{
+    margin-top:70px;
 
-    .card p {
-      color: #64748b;
+    display:grid;
 
-      font-size: 14px;
-    }
+    grid-template-columns:
+    repeat(3,1fr);
 
-    .card-link {
-      display: inline-block;
+    gap:20px;
+}
 
-      margin-top: 15px;
+.info-card{
+    background:white;
 
-      color: #2563eb;
+    border:1px solid var(--border);
 
-      font-weight: 800;
+    border-radius:20px;
 
-      font-size: 14px;
-    }
+    padding:25px;
+}
 
+.info-card span{
+    font-size:30px;
+}
 
-    /* =========================
-       ARTICLES
-    ========================= */
+.info-card h3{
+    margin:12px 0 7px;
+}
 
-    .article {
-      background: white;
+.info-card p{
+    color:var(--muted);
+    font-size:14px;
+}
 
-      border:
-        1px solid #e7eaf0;
+/* =========================
+   ARTICLES
+========================= */
 
-      border-radius: 18px;
+.articles{
+    margin-top:80px;
+}
 
-      overflow: hidden;
+.article-grid{
+    display:grid;
 
-      transition:
-        transform .25s,
-        box-shadow .25s;
-    }
+    grid-template-columns:
+    repeat(3,1fr);
 
-    .article:hover {
-      transform: translateY(-5px);
+    gap:20px;
+}
 
-      box-shadow:
-        0 15px 40px rgba(15,23,42,.09);
-    }
+.article{
+    background:white;
 
-    .article-image {
-      height: 150px;
+    border:1px solid var(--border);
 
-      display: grid;
-      place-items: center;
+    border-radius:20px;
 
-      font-size: 55px;
+    overflow:hidden;
 
-      background:
-        linear-gradient(
-          135deg,
-          #dbeafe,
-          #ede9fe
-        );
-    }
+    text-decoration:none;
 
-    .article-content {
-      padding: 20px;
-    }
+    color:var(--text);
 
-    .article-tag {
-      color: #2563eb;
+    transition:.2s;
+}
 
-      font-size: 12px;
+.article:hover{
+    transform:translateY(-5px);
 
-      font-weight: 900;
+    box-shadow:
+    0 15px 35px rgba(15,23,42,.1);
+}
 
-      text-transform: uppercase;
-    }
+.article-image{
+    height:130px;
 
-    .article h3 {
-      margin: 7px 0;
-    }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    .article p {
-      color: #64748b;
+    background:
+    linear-gradient(
+        135deg,
+        #dbeafe,
+        #ede9fe
+    );
 
-      font-size: 14px;
-    }
+    font-size:45px;
+}
 
+.article-content{
+    padding:20px;
+}
 
-    /* =========================
-       TOOL
-    ========================= */
+.article-content small{
+    color:var(--primary);
+    font-weight:800;
+}
 
-    .tool-box {
-      background: white;
+.article-content h3{
+    margin:8px 0;
+}
 
-      border:
-        1px solid #e7eaf0;
+.article-content p{
+    color:var(--muted);
+    font-size:14px;
+}
 
-      border-radius: 20px;
+/* =========================
+   CTA
+========================= */
 
-      padding: 25px;
-    }
+.cta{
+    margin-top:80px;
 
-    .tool-grid {
-      display: grid;
+    padding:45px 25px;
 
-      grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(200px, 1fr)
-        );
+    text-align:center;
 
-      gap: 14px;
+    border-radius:25px;
 
-      margin-top: 20px;
-    }
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
 
-    .field label {
-      display: block;
+    color:white;
+}
 
-      font-size: 13px;
+.cta h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
 
-      font-weight: 800;
+.cta p{
+    color:#e0e7ff;
 
-      margin-bottom: 7px;
-    }
+    max-width:650px;
+    margin:auto;
+}
 
-    .field input {
-      width: 100%;
+/* =========================
+   FOOTER
+========================= */
 
-      padding: 13px;
+footer{
+    margin-top:70px;
 
-      border:
-        1px solid #dbe1ea;
+    background:#0f172a;
 
-      border-radius: 10px;
+    color:#cbd5e1;
 
-      outline: 0;
+    padding:45px 20px;
+}
 
-      font-size: 16px;
+.footer-container{
+    max-width:1180px;
+    margin:auto;
 
-      background: transparent;
+    display:grid;
 
-      color: inherit;
-    }
+    grid-template-columns:
+    2fr 1fr 1fr;
 
-    .field input:focus {
-      border-color: #2563eb;
-    }
+    gap:40px;
+}
 
-    .tool-result {
-      margin-top: 18px;
+.footer-logo{
+    color:white;
 
-      padding: 17px;
+    font-size:20px;
+    font-weight:900;
 
-      background: #eff6ff;
+    margin-bottom:10px;
+}
 
-      color: #1d4ed8;
+.footer-container p{
+    color:#94a3b8;
+    font-size:14px;
+}
 
-      border-radius: 12px;
+.footer-column h4{
+    color:white;
+    margin-bottom:12px;
+}
 
-      font-weight: 800;
-    }
+.footer-column a{
+    display:block;
 
+    color:#94a3b8;
 
-    /* =========================
-       NEWSLETTER
-    ========================= */
+    text-decoration:none;
 
-    .newsletter {
-      margin-top: 20px;
+    font-size:14px;
 
-      padding: 35px;
+    margin:7px 0;
+}
 
-      border-radius: 22px;
+.footer-column a:hover{
+    color:white;
+}
 
-      background:
-        linear-gradient(
-          135deg,
-          #111827,
-          #312e81
-        );
+.copyright{
+    max-width:1180px;
 
-      color: white;
-    }
+    margin:35px auto 0;
 
-    .newsletter h2 {
-      font-size: 28px;
+    padding-top:20px;
 
-      margin-bottom: 8px;
-    }
+    border-top:1px solid #1e293b;
 
-    .newsletter p {
-      color: #cbd5e1;
+    color:#64748b;
 
-      margin-bottom: 20px;
-    }
+    font-size:13px;
+}
 
-    .newsletter-form {
-      display: flex;
+/* =========================
+   NO RESULTS
+========================= */
 
-      gap: 10px;
+.no-results{
+    display:none;
 
-      max-width: 600px;
-    }
+    text-align:center;
 
-    .newsletter-form input {
-      flex: 1;
+    padding:50px;
 
-      min-width: 0;
+    color:var(--muted);
 
-      padding: 14px;
+    grid-column:1/-1;
+}
 
-      border: 0;
+/* =========================
+   RESPONSIVE
+========================= */
 
-      border-radius: 10px;
+@media(max-width:1000px){
 
-      outline: 0;
+    .tools-grid{
+        grid-template-columns:
+        repeat(2,1fr);
     }
-
 
-    /* =========================
-       SHARE
-    ========================= */
+}
 
-    .share {
-      text-align: center;
+@media(max-width:700px){
 
-      padding: 30px 0;
+    nav{
+        display:none;
     }
-
-    .share-buttons {
-      margin-top: 15px;
-
-      display: flex;
-
-      justify-content: center;
 
-      gap: 8px;
-
-      flex-wrap: wrap;
+    .hero{
+        padding:60px 18px;
     }
-
-    .share-btn {
-      border: 0;
-
-      padding: 11px 15px;
-
-      border-radius: 10px;
 
-      cursor: pointer;
-
-      background: #111827;
-
-      color: white;
-
-      font-weight: 800;
+    .hero h1{
+        letter-spacing:-1px;
     }
-
 
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      margin-top: 40px;
-
-      background: #0f172a;
-
-      color: white;
-
-      padding: 45px 0 25px;
+    main{
+        padding:45px 16px;
     }
 
-    .footer-grid {
-      display: grid;
-
-      grid-template-columns:
-        2fr 1fr 1fr;
-
-      gap: 30px;
+    .section-header{
+        display:block;
     }
 
-    footer h3 {
-      margin-bottom: 12px;
+    .section-header h2{
+        font-size:27px;
     }
 
-    footer p,
-    footer a {
-      color: #94a3b8;
-
-      font-size: 14px;
+    .tools-grid{
+        grid-template-columns:1fr;
     }
 
-    footer a {
-      display: block;
-
-      margin-bottom: 7px;
+    .info-section{
+        grid-template-columns:1fr;
     }
 
-    footer a:hover {
-      color: white;
+    .article-grid{
+        grid-template-columns:1fr;
     }
-
-    .copyright {
-      border-top:
-        1px solid #263246;
 
-      margin-top: 35px;
-
-      padding-top: 20px;
-
-      color: #64748b;
-
-      font-size: 13px;
-
-      text-align: center;
+    .footer-container{
+        grid-template-columns:1fr;
     }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 760px) {
-
-      .nav {
-        min-height: 62px;
-      }
 
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 45px 22px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .section {
-        padding: 42px 0;
-      }
-
-      .section-title {
-        font-size: 25px;
-      }
-
-      .newsletter-form {
-        flex-direction: column;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
+}
 
-  </style>
+</style>
 </head>
-
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-  <header class="header">
+<header>
 
-    <nav class="nav">
+<div class="navbar">
 
-      <a href="#inicio" class="logo">
+<a href="index.html" class="logo">
 
-        <span class="logo-icon">
-          🚀
-        </span>
+<div class="logo-icon">
+⚡
+</div>
 
-        <span>
-          Zona Útil
-        </span>
+Zona Útil
 
-      </a>
+</a>
 
+<nav>
 
-      <div class="nav-links">
+<a href="#herramientas">
+Herramientas
+</a>
 
-        <a href="#inicio">
-          Inicio
-        </a>
+<a href="#articulos">
+Artículos
+</a>
 
-        <a href="#herramientas">
-          Herramientas
-        </a>
+<a href="contacto.html">
+Contacto
+</a>
 
-        <a href="#articulos">
-          Artículos
-        </a>
+</nav>
 
-        <a href="#contacto">
-          Contacto
-        </a>
+</div>
 
-      </div>
+</header>
 
 
-      <div class="nav-actions">
+<!-- =========================
+     HERO
+========================= -->
 
-        <button
-          class="icon-btn"
-          id="themeButton"
-          aria-label="Cambiar tema">
+<section class="hero">
 
-          🌙
+<div class="hero-container">
 
-        </button>
+<div class="badge">
+🚀 Herramientas gratuitas para todos
+</div>
 
-      </div>
+<h1>
+Tus herramientas útiles,
+<br>
+<span>en un solo lugar.</span>
+</h1>
 
-    </nav>
+<p>
+Calcula, genera, convierte, organiza y descubre
+herramientas prácticas para el día a día.
+</p>
 
-  </header>
+<div class="search-box">
 
+<input
+type="search"
+id="search"
+placeholder="¿Qué herramienta necesitas?"
+autocomplete="off"
+>
 
-  <main id="inicio">
+<div class="search-icon">
+🔎
+</div>
 
-    <div class="container">
+</div>
 
+</div>
 
-      <!-- =========================
-           HERO
-      ========================= -->
+</section>
 
-      <section class="hero">
 
-        <div class="badge">
-          ✨ Contenido nuevo cada semana
-        </div>
+<!-- =========================
+     MAIN
+========================= -->
 
+<main id="herramientas">
 
-        <h1>
 
-          Descubre cosas
-          <span class="gradient-text">
-            realmente útiles.
-          </span>
+<div class="section-header">
 
-        </h1>
+<div>
 
+<h2>
+🧰 Herramientas
+</h2>
 
-        <p>
+<p>
+Utilidades gratuitas y fáciles de usar.
+</p>
 
-          Herramientas gratuitas, tecnología,
-          consejos para ahorrar, ideas para negocios
-          y recursos para aprovechar mejor Internet.
+</div>
 
-        </p>
+</div>
 
 
-        <div class="hero-buttons">
+<!-- CATEGORÍAS -->
 
-          <a
-            href="#herramientas"
-            class="btn btn-primary">
+<div class="categories">
 
-            🛠️ Explorar herramientas
+<button
+class="category active"
+data-category="all">
+Todas
+</button>
 
-          </a>
+<button
+class="category"
+data-category="utilidades">
+Utilidades
+</button>
 
+<button
+class="category"
+data-category="aleatorio">
+Aleatorio
+</button>
 
-          <a
-            href="#articulos"
-            class="btn btn-secondary">
+<button
+class="category"
+data-category="seguridad">
+Seguridad
+</button>
 
-            📰 Leer artículos
+<button
+class="category"
+data-category="texto">
+Texto
+</button>
 
-          </a>
+<button
+class="category"
+data-category="diseño">
+Diseño
+</button>
 
-        </div>
+</div>
 
-      </section>
 
+<!-- =========================
+     HERRAMIENTAS
+========================= -->
 
-      <!-- =========================
-           SEARCH
-      ========================= -->
+<div class="tools-grid">
 
-      <section class="search-section">
 
-        <div class="search-box">
+<!-- 1 -->
 
-          <span>
-            🔎
-          </span>
+<a
+href="herramientas/calculadora.html"
+class="tool-card"
+data-category="utilidades"
+data-name="calculadora matematicas">
 
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Busca herramientas, consejos o artículos..."
-            autocomplete="off">
+<div class="tool-icon">
+🧮
+</div>
 
-        </div>
+<h3>
+Calculadora
+</h3>
 
-      </section>
+<p>
+Realiza operaciones matemáticas de forma rápida y sencilla.
+</p>
 
+<div class="tool-bottom">
 
-      <!-- =========================
-           CATEGORIES
-      ========================= -->
+<span class="tool-tag">
+Utilidad
+</span>
 
-      <section class="section"
-               style="padding-bottom:25px;">
+<span class="open">
+Abrir →
+</span>
 
-        <div class="categories">
+</div>
 
-          <button
-            class="category active"
-            data-category="all">
+</a>
 
-            Todo
 
-          </button>
+<!-- 2 -->
 
-          <button
-            class="category"
-            data-category="dinero">
+<a
+href="herramientas/cara_cruz.html"
+class="tool-card"
+data-category="aleatorio"
+data-name="cara cruz moneda">
 
-            💰 Dinero
+<div class="tool-icon">
+🪙
+</div>
 
-          </button>
+<h3>
+Cara o Cruz
+</h3>
 
-          <button
-            class="category"
-            data-category="tecnologia">
+<p>
+Lanza una moneda virtual y deja que el azar decida.
+</p>
 
-            📱 Tecnología
+<div class="tool-bottom">
 
-          </button>
+<span class="tool-tag">
+Aleatorio
+</span>
 
-          <button
-            class="category"
-            data-category="negocios">
+<span class="open">
+Abrir →
+</span>
 
-            💼 Negocios
+</div>
 
-          </button>
+</a>
 
-          <button
-            class="category"
-            data-category="internet">
 
-            🌐 Internet
+<!-- 3 -->
 
-          </button>
+<a
+href="herramientas/colores.html"
+class="tool-card"
+data-category="diseño"
+data-name="colores color hex rgb">
 
-          <button
-            class="category"
-            data-category="herramientas">
+<div class="tool-icon">
+🎨
+</div>
 
-            🧰 Herramientas
+<h3>
+Generador de Colores
+</h3>
 
-          </button>
+<p>
+Genera colores aleatorios y obtén su código HEX y RGB.
+</p>
 
-        </div>
+<div class="tool-bottom">
 
-      </section>
+<span class="tool-tag">
+Diseño
+</span>
 
+<span class="open">
+Abrir →
+</span>
 
-      <!-- =========================
-           ADVERTISEMENT
-      ========================= -->
+</div>
 
-      <div class="ad">
+</a>
 
-        <div>
 
-          <strong>
-            <script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'fur6alx7a3',
-    });
-</script>
+<!-- 4 -->
 
-          </strong>
+<a
+href="herramientas/contador_palabras.html"
+class="tool-card"
+data-category="texto"
+data-name="contador palabras caracteres texto">
 
-          <br>
+<div class="tool-icon">
+📝
+</div>
 
-<script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+<h3>
+Contador de Palabras
+</h3>
 
+<p>
+Cuenta palabras, caracteres y líneas de cualquier texto.
+</p>
 
-        </div>
+<div class="tool-bottom">
 
-      </div>
+<span class="tool-tag">
+Texto
+</span>
 
+<span class="open">
+Abrir →
+</span>
 
-      <!-- =========================
-           TOOLS
-      ========================= -->
+</div>
 
-      <section
-        class="section"
-        id="herramientas">
+</a>
 
-        <h2 class="section-title">
-          🧰 Herramientas gratuitas
-        </h2>
 
-        <p class="section-subtitle">
+<!-- 5 -->
 
-          Utilidades rápidas que puedes utilizar
-          directamente desde tu navegador.
+<a
+href="herramientas/contrasenas.html"
+class="tool-card"
+data-category="seguridad"
+data-name="generador contrasenas contraseña seguridad">
 
-        </p>
+<div class="tool-icon">
+🔐
+</div>
 
+<h3>
+Generador de Contraseñas
+</h3>
 
-        <div class="grid">
+<p>
+Crea contraseñas aleatorias con diferentes niveles de complejidad.
+</p>
 
+<div class="tool-bottom">
 
-          <article
-            class="card searchable"
-            data-category="dinero herramientas">
+<span class="tool-tag">
+Seguridad
+</span>
 
-            <div class="card-icon">
-              💰
-            </div>
+<span class="open">
+Abrir →
+</span>
 
-            <h3>
-              Calculadora de ahorro
-            </h3>
+</div>
 
-            <p>
-              Calcula cuánto dinero podrías ahorrar
-              después de tus gastos mensuales.
-            </p>
+</a>
 
-            <a
-              class="card-link"
-              href="#calculadora">
 
-              Usar herramienta →
+<!-- 6 -->
 
-            </a>
+<a
+href="herramientas/dados.html"
+class="tool-card"
+data-category="aleatorio"
+data-name="dados dado d4 d6 d8 d10 d20">
 
-          </article>
+<div class="tool-icon">
+🎲
+</div>
 
+<h3>
+Dados Virtuales
+</h3>
 
-          <article
-            class="card searchable"
-            data-category="internet herramientas">
+<p>
+Lanza diferentes tipos de dados virtuales desde tu navegador.
+</p>
 
-            <div class="card-icon">
-              🔗
-            </div>
+<div class="tool-bottom">
 
-            <h3>
-              Compartir página
-            </h3>
+<span class="tool-tag">
+Aleatorio
+</span>
 
-            <p>
-              Comparte Zona Útil rápidamente
-              con tus amigos y contactos.
-            </p>
+<span class="open">
+Abrir →
+</span>
 
-            <a
-              class="card-link"
-              href="#compartir">
+</div>
 
-              Compartir →
+</a>
 
-            </a>
 
-          </article>
+<!-- 7 -->
 
+<a
+href="herramientas/numeros_aleatorios.html"
+class="tool-card"
+data-category="aleatorio"
+data-name="numeros números aleatorios random">
 
-          <article
-            class="card searchable"
-            data-category="tecnologia herramientas">
+<div class="tool-icon">
+🔢
+</div>
 
-            <div class="card-icon">
-              📱
-            </div>
+<h3>
+Números Aleatorios
+</h3>
 
-            <h3>
-              Consejos tecnológicos
-            </h3>
+<p>
+Genera números aleatorios utilizando el rango que tú elijas.
+</p>
 
-            <p>
-              Descubre formas de aprovechar
-              mejor tus dispositivos.
-            </p>
+<div class="tool-bottom">
 
-            <a
-              class="card-link"
-              href="#articulos">
+<span class="tool-tag">
+Aleatorio
+</span>
 
-              Ver consejos →
+<span class="open">
+Abrir →
+</span>
 
-            </a>
+</div>
 
-          </article>
+</a>
 
 
-          <article
-            class="card searchable"
-            data-category="negocios herramientas">
+<!-- 8 -->
 
-            <div class="card-icon">
-              💼
-            </div>
+<a
+href="herramientas/sorteador.html"
+class="tool-card"
+data-category="aleatorio"
+data-name="sorteador sorteo elegir ganador">
 
-            <h3>
-              Ideas para negocios
-            </h3>
+<div class="tool-icon">
+🎯
+</div>
 
-            <p>
-              Explora ideas y recursos para comenzar
-              pequeños proyectos digitales.
-            </p>
+<h3>
+Sorteador
+</h3>
 
-            <a
-              class="card-link"
-              href="#articulos">
+<p>
+Introduce varias opciones y deja que el sistema elija una al azar.
+</p>
 
-              Explorar →
+<div class="tool-bottom">
 
-            </a>
+<span class="tool-tag">
+Aleatorio
+</span>
 
-          </article>
+<span class="open">
+Abrir →
+</span>
 
+</div>
 
-        </div>
+</a>
 
-      </section>
 
+<div class="no-results" id="noResults">
 
-      <!-- =========================
-           CALCULATOR
-      ========================= -->
+<h3>
+😕 No encontramos esa herramienta
+</h3>
 
-      <section
-        class="section"
-        id="calculadora">
+<p>
+Prueba con otra palabra o categoría.
+</p>
 
-        <div class="tool-box">
+</div>
 
-          <h2 class="section-title">
-            💵 Calculadora de ahorro
-          </h2>
 
-          <p class="muted">
+</div>
 
-            Introduce tus ingresos y gastos mensuales.
 
-          </p>
+<!-- =========================
+     ESPACIO PUBLICITARIO
+========================= -->
 
+<div class="ad-container">
 
-          <div class="tool-grid">
+Espacio reservado para publicidad
 
-            <div class="field">
+</div>
 
-              <label>
-                Ingreso mensual
-              </label>
 
-              <input
-                type="number"
-                id="income"
-                placeholder="Ej. 12000"
-                min="0">
+<!-- =========================
+     POR QUÉ ZONA ÚTIL
+========================= -->
 
-            </div>
+<section class="info-section">
 
+<div class="info-card">
 
-            <div class="field">
+<span>
+⚡
+</span>
 
-              <label>
-                Gastos mensuales
-              </label>
+<h3>
+Rápido
+</h3>
 
-              <input
-                type="number"
-                id="expenses"
-                placeholder="Ej. 8500"
-                min="0">
+<p>
+Herramientas diseñadas para funcionar directamente desde tu navegador.
+</p>
 
-            </div>
+</div>
 
-          </div>
 
+<div class="info-card">
 
-          <button
-            class="btn btn-primary"
-            style="margin-top:18px;"
-            onclick="calculateSavings()">
+<span>
+📱
+</span>
 
-            Calcular ahora
+<h3>
+Compatible
+</h3>
 
-          </button>
+<p>
+Diseñado para celulares, tablets y computadoras.
+</p>
 
+</div>
 
-          <div
-            class="tool-result"
-            id="calculatorResult">
 
-            Introduce tus datos para comenzar.
+<div class="info-card">
 
-          </div>
+<span>
+🆓
+</span>
 
-        </div>
+<h3>
+Gratis
+</h3>
 
-      </section>
+<p>
+Accede a nuestras herramientas sin necesidad de instalar aplicaciones.
+</p>
 
+</div>
 
-      <!-- =========================
-           ARTICLES
-      ========================= -->
+</section>
 
-      <section
-        class="section"
-        id="articulos">
 
-        <h2 class="section-title">
-          📰 Contenido útil
-        </h2>
+<!-- =========================
+     ARTÍCULOS
+========================= -->
 
-        <p class="section-subtitle">
+<section
+class="articles"
+id="articulos">
 
-          Artículos pensados para ayudarte
-          a aprender y tomar mejores decisiones.
+<div class="section-header">
 
-        </p>
+<div>
 
+<h2>
+📚 Artículos destacados
+</h2>
 
-        <div class="grid">
+<p>
+Consejos y recursos útiles.
+</p>
 
+</div>
 
-          <article
-            class="article searchable"
-            data-category="dinero">
+</div>
 
-            <div class="article-image">
-              💰
-            </div>
 
-            <div class="article-content">
+<div class="article-grid">
 
-              <span class="article-tag">
-                Dinero
-              </span>
 
-              <h3>
-                Cómo organizar mejor tu dinero
-              </h3>
+<a
+class="article"
+href="articulos/ahorrar-dinero.html">
 
-              <p>
+<div class="article-image">
+💰
+</div>
 
-                Aprende algunos principios sencillos
-                para conocer tus ingresos y gastos.
+<div class="article-content">
 
-              </p>
+<small>
+FINANZAS
+</small>
 
-              <a
-                class="card-link"
-                href="#articulo-dinero">
+<h3>
+Consejos para ahorrar dinero
+</h3>
 
-                Leer artículo →
+<p>
+Ideas prácticas para organizar mejor tus gastos.
+</p>
 
-              </a>
+</div>
 
-            </div>
+</a>
 
-          </article>
 
+<a
+class="article"
+href="articulos/aprovechar-celular.html">
 
-          <article
-            class="article searchable"
-            data-category="tecnologia">
+<div class="article-image">
+📱
+</div>
 
-            <div class="article-image">
-              📱
-            </div>
+<div class="article-content">
 
-            <div class="article-content">
+<small>
+TECNOLOGÍA
+</small>
 
-              <span class="article-tag">
-                Tecnología
-              </span>
+<h3>
+Cómo aprovechar mejor tu celular
+</h3>
 
-              <h3>
-                Aprovecha mejor tu celular
-              </h3>
+<p>
+Herramientas y consejos para sacarle más provecho.
+</p>
 
-              <p>
+</div>
 
-                Ideas para convertir tu teléfono
-                en una herramienta de productividad.
+</a>
 
-              </p>
 
-              <a
-                class="card-link"
-                href="#articulo-celular">
+<a
+class="article"
+href="articulos/herramientas-internet.html">
 
-                Leer artículo →
+<div class="article-image">
+🌐
+</div>
 
-              </a>
+<div class="article-content">
 
-            </div>
+<small>
+INTERNET
+</small>
 
-          </article>
+<h3>
+Herramientas útiles de Internet
+</h3>
 
+<p>
+Recursos que pueden ayudarte en tus actividades diarias.
+</p>
 
-          <article
-            class="article searchable"
-            data-category="internet">
+</div>
 
-            <div class="article-image">
-              🌐
-            </div>
+</a>
 
-            <div class="article-content">
 
-              <span class="article-tag">
-                Internet
-              </span>
+</div>
 
-              <h3>
-                Herramientas gratuitas online
-              </h3>
+</section>
 
-              <p>
 
-                Recursos que pueden ayudarte
-                a estudiar, trabajar y crear.
+<!-- =========================
+     CTA
+========================= -->
 
-              </p>
+<section class="cta">
 
-              <a
-                class="card-link"
-                href="#articulo-internet">
+<h2>
+¿No encuentras lo que buscas?
+</h2>
 
-                Leer artículo →
+<p>
+Estamos agregando nuevas herramientas y recursos.
+Visita Zona Útil próximamente para descubrir nuevas utilidades.
+</p>
 
-              </a>
+</section>
 
-            </div>
 
-          </article>
+</main>
 
 
-        </div>
+<!-- =========================
+     FOOTER
+========================= -->
 
-      </section>
+<footer>
 
+<div class="footer-container">
 
-      <!-- =========================
-           ADVERTISEMENT
-      ========================= -->
 
-      <div class="ad">
+<div>
 
-        ESPACIO PUBLICITARIO
+<div class="footer-logo">
+⚡ Zona Útil
+</div>
 
-      </div>
+<p>
+Herramientas online gratuitas y recursos
+prácticos para el día a día.
+</p>
 
+</div>
 
-      <!-- =========================
-           LONG CONTENT
-      ========================= -->
 
-      <section
-        class="section"
-        id="articulo-dinero">
+<div class="footer-column">
 
-        <div class="tool-box">
+<h4>
+Navegación
+</h4>
 
-          <span class="article-tag">
-            GUÍA
-          </span>
+<a href="index.html">
+Inicio
+</a>
 
-          <h2 class="section-title">
+<a href="#herramientas">
+Herramientas
+</a>
 
-            Cómo organizar mejor tu dinero
+<a href="#articulos">
+Artículos
+</a>
 
-          </h2>
+</div>
 
-          <p>
 
-            Tener control sobre tus finanzas comienza
-            por saber exactamente cuánto dinero entra
-            y cuánto sale cada mes.
+<div class="footer-column">
 
-          </p>
+<h4>
+Información
+</h4>
 
-          <br>
+<a href="privacidad.html">
+Privacidad
+</a>
 
-          <p>
+<a href="contacto.html">
+Contacto
+</a>
 
-            Una estrategia sencilla consiste en registrar
-            tus gastos, separar las necesidades de los
-            gastos opcionales y establecer una cantidad
-            destinada al ahorro.
+</div>
 
-          </p>
 
-          <br>
+</div>
 
-          <p>
 
-            También es recomendable revisar periódicamente
-            tus suscripciones y compras recurrentes.
-            Pequeños gastos pueden convertirse en cantidades
-            importantes a lo largo del año.
+<div class="copyright">
 
-          </p>
+© 2026 Zona Útil. Todos los derechos reservados.
 
-        </div>
+</div>
 
-      </section>
+</footer>
 
 
-      <section
-        class="section"
-        id="articulo-celular">
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-        <div class="tool-box">
+<script>
 
-          <span class="article-tag">
-            TECNOLOGÍA
-          </span>
+const searchInput =
+document.getElementById("search");
 
-          <h2 class="section-title">
+const cards =
+document.querySelectorAll(".tool-card");
 
-            Aprovecha mejor tu celular
+const categories =
+document.querySelectorAll(".category");
 
-          </h2>
+const noResults =
+document.getElementById("noResults");
 
-          <p>
+let currentCategory = "all";
 
-            Un teléfono moderno puede servir para mucho
-            más que llamadas y redes sociales.
 
-          </p>
+/* =========================
+   FILTRO
+========================= */
 
-          <br>
+function filterTools(){
 
-          <p>
+    const search =
+    searchInput.value
+    .toLowerCase()
+    .trim();
 
-            Puedes utilizarlo para estudiar,
-            administrar proyectos, editar fotografías,
-            programar, crear contenido y organizar
-            tus actividades.
+    let visible = 0;
 
-          </p>
+    cards.forEach(card => {
 
-          <br>
+        const name =
+        card.dataset.name
+        .toLowerCase();
 
-          <p>
+        const category =
+        card.dataset.category;
 
-            Mantener tus aplicaciones actualizadas,
-            revisar los permisos y eliminar archivos
-            innecesarios también puede ayudarte
-            a mantener el dispositivo organizado.
+        const matchesSearch =
+        name.includes(search);
 
-          </p>
+        const matchesCategory =
+        currentCategory === "all" ||
+        category === currentCategory;
 
-        </div>
+        if(
+            matchesSearch &&
+            matchesCategory
+        ){
 
-      </section>
+            card.style.display = "flex";
 
+            visible++;
 
-      <section
-        class="section"
-        id="articulo-internet">
+        }else{
 
-        <div class="tool-box">
+            card.style.display = "none";
 
-          <span class="article-tag">
-            INTERNET
-          </span>
-
-          <h2 class="section-title">
-
-            Herramientas gratuitas de Internet
-
-          </h2>
-
-          <p>
-
-            Internet ofrece una gran cantidad de recursos
-            gratuitos para aprender nuevas habilidades,
-            trabajar y desarrollar proyectos.
-
-          </p>
-
-          <br>
-
-          <p>
-
-            Antes de utilizar una herramienta,
-            revisa siempre sus condiciones de uso,
-            privacidad y reputación.
-
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- =========================
-           NEWSLETTER
-      ========================= -->
-
-      <section class="newsletter">
-
-        <h2>
-          📩 Recibe novedades
-        </h2>
-
-        <p>
-
-          Guarda esta página en favoritos para encontrar
-          nuevas herramientas y artículos.
-
-        </p>
-
-
-        <div class="newsletter-form">
-
-          <input
-            type="email"
-            id="email"
-            placeholder="Tu correo electrónico">
-
-          <button
-            class="btn btn-primary"
-            onclick="subscribe()">
-
-            Suscribirme
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-      <!-- =========================
-           SHARE
-      ========================= -->
-
-      <section
-        class="share"
-        id="compartir">
-
-        <h2>
-          📲 Comparte Zona Útil
-        </h2>
-
-        <p class="muted">
-
-          Si te parece útil, compártela con alguien.
-
-        </p>
-
-
-        <div class="share-buttons">
-
-          <button
-            class="share-btn"
-            onclick="shareWhatsApp()">
-
-            WhatsApp
-
-          </button>
-
-
-          <button
-            class="share-btn"
-            onclick="shareFacebook()">
-
-            Facebook
-
-          </button>
-
-
-          <button
-            class="share-btn"
-            onclick="copyLink()">
-
-            Copiar enlace
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-    </div>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer id="contacto">
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-
-        <div>
-
-          <h3>
-            🚀 Zona Útil
-          </h3>
-
-          <p>
-
-            Herramientas, tecnología,
-            consejos y recursos útiles
-            para todos.
-
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <h3>
-            Navegación
-          </h3>
-
-          <a href="#inicio">
-            Inicio
-          </a>
-
-          <a href="#herramientas">
-            Herramientas
-          </a>
-
-          <a href="#articulos">
-            Artículos
-          </a>
-
-        </div>
-
-
-        <div>
-
-          <h3>
-            Información
-          </h3>
-
-          <a href="#">
-            Privacidad
-          </a>
-
-          <a href="#">
-            Aviso legal
-          </a>
-
-          <a href="mailto:contacto@tudominio.com">
-            Contacto
-          </a>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="copyright">
-
-        © 2026 Zona Útil.
-        Todos los derechos reservados.
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-
-
-    /* =========================
-       DARK MODE
-    ========================= */
-
-    const themeButton =
-      document.getElementById("themeButton");
-
-    const savedTheme =
-      localStorage.getItem("zonaUtilTheme");
-
-    if (savedTheme === "dark") {
-
-      document.body.classList.add("dark");
-
-      themeButton.textContent = "☀️";
-
-    }
-
-
-    themeButton.addEventListener("click", () => {
-
-      document.body.classList.toggle("dark");
-
-      const dark =
-        document.body.classList.contains("dark");
-
-      localStorage.setItem(
-        "zonaUtilTheme",
-        dark ? "dark" : "light"
-      );
-
-      themeButton.textContent =
-        dark ? "☀️" : "🌙";
+        }
 
     });
 
 
-    /* =========================
-       CALCULATOR
-    ========================= */
+    noResults.style.display =
+    visible === 0
+    ? "block"
+    : "none";
 
-    function calculateSavings() {
-
-      const income =
-        Number(
-          document.getElementById("income").value
-        );
-
-      const expenses =
-        Number(
-          document.getElementById("expenses").value
-        );
-
-      const result =
-        document.getElementById(
-          "calculatorResult"
-        );
+}
 
 
-      if (
-        !income ||
-        income <= 0
-      ) {
+/* =========================
+   BUSCADOR
+========================= */
 
-        result.textContent =
-          "Introduce un ingreso mensual válido.";
-
-        return;
-
-      }
+searchInput.addEventListener(
+    "input",
+    filterTools
+);
 
 
-      if (
-        expenses < 0
-      ) {
+/* =========================
+   CATEGORÍAS
+========================= */
 
-        result.textContent =
-          "Los gastos no pueden ser negativos.";
+categories.forEach(button => {
 
-        return;
-
-      }
-
-
-      const savings =
-        income - expenses;
-
-
-      if (savings > 0) {
-
-        result.innerHTML =
-          "💰 Disponible para ahorrar: $" +
-          savings.toLocaleString(
-            "es-MX",
-            {
-              minimumFractionDigits: 2
-            }
-          );
-
-      }
-
-      else if (savings === 0) {
-
-        result.textContent =
-          "⚖️ Tus ingresos y gastos están equilibrados.";
-
-      }
-
-      else {
-
-        result.innerHTML =
-          "⚠️ Tus gastos superan tus ingresos por $" +
-          Math.abs(savings).toLocaleString(
-            "es-MX",
-            {
-              minimumFractionDigits: 2
-            }
-          );
-
-      }
-
-    }
-
-
-    /* =========================
-       SEARCH
-    ========================= */
-
-    const searchInput =
-      document.getElementById(
-        "searchInput"
-      );
-
-
-    searchInput.addEventListener(
-      "input",
-      function() {
-
-        const search =
-          this.value
-            .toLowerCase()
-            .trim();
-
-
-        const items =
-          document.querySelectorAll(
-            ".searchable"
-          );
-
-
-        items.forEach(item => {
-
-          const text =
-            item.textContent
-              .toLowerCase();
-
-
-          if (
-            text.includes(search)
-          ) {
-
-            item.style.display = "";
-
-          }
-
-          else {
-
-            item.style.display = "none";
-
-          }
-
-        });
-
-      }
-    );
-
-
-    /* =========================
-       CATEGORIES
-    ========================= */
-
-    const categoryButtons =
-      document.querySelectorAll(
-        ".category"
-      );
-
-
-    categoryButtons.forEach(button => {
-
-      button.addEventListener(
+    button.addEventListener(
         "click",
         () => {
 
-          categoryButtons.forEach(
-            b =>
-              b.classList.remove(
-                "active"
-              )
-          );
-
-          button.classList.add(
-            "active"
-          );
-
-
-          const category =
-            button.dataset.category;
-
-
-          const items =
-            document.querySelectorAll(
-              ".searchable"
+            categories.forEach(
+                b => b.classList.remove("active")
             );
 
+            button.classList.add("active");
 
-          items.forEach(item => {
+            currentCategory =
+            button.dataset.category;
 
-            if (
-              category === "all"
-            ) {
-
-              item.style.display = "";
-
-              return;
-
-            }
-
-
-            const itemCategories =
-              item.dataset.category
-                .split(" ");
-
-
-            item.style.display =
-              itemCategories.includes(
-                category
-              )
-                ? ""
-                : "none";
-
-          });
+            filterTools();
 
         }
-      );
+    );
 
-    });
-
-
-    /* =========================
-       WHATSAPP
-    ========================= */
-
-    function shareWhatsApp() {
-
-      const text =
-        "Mira Zona Útil: herramientas y contenido útil.";
-
-      const url =
-        "https://wa.me/?text=" +
-        encodeURIComponent(
-          text + " " + window.location.href
-        );
-
-      window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-    }
+});
 
 
-    /* =========================
-       FACEBOOK
-    ========================= */
+</script>
 
-    function shareFacebook() {
-
-      const url =
-        "https://www.facebook.com/sharer/sharer.php?u=" +
-        encodeURIComponent(
-          window.location.href
-        );
-
-      window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-      );
-
-    }
-
-
-    /* =========================
-       COPY LINK
-    ========================= */
-
-    async function copyLink() {
-
-      try {
-
-        await navigator.clipboard.writeText(
-          window.location.href
-        );
-
-        alert(
-          "✅ Enlace copiado correctamente."
-        );
-
-      }
-
-      catch {
-
-        alert(
-          "Copia manualmente la dirección de la página."
-        );
-
-      }
-
-    }
-
-
-    /* =========================
-       SUBSCRIBE
-    ========================= */
-
-    function subscribe() {
-
-      const email =
-        document.getElementById(
-          "email"
-        ).value.trim();
-
-
-      if (
-        !email ||
-        !email.includes("@")
-      ) {
-
-        alert(
-          "Introduce un correo válido."
-        );
-
-        return;
-
-      }
-
-
-      alert(
-        "✅ Gracias. La función de suscripción estará conectada a un servicio de correo cuando configuremos el backend."
-      );
-
-    }
-
-
-  </script>
 
 </body>
 </html>
